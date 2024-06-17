@@ -3,8 +3,17 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import Profile from "@components/Profile";
+
+const MyProfilePage = () => {
+  return (
+    <Suspense>
+      <MyProfile />
+    </Suspense>
+  );
+};
 
 const MyProfile = () => {
   const searchParams = useSearchParams();
@@ -54,4 +63,5 @@ const MyProfile = () => {
     ></Profile>
   );
 };
-export default MyProfile;
+
+export default MyProfilePage;

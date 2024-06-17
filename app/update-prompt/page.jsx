@@ -2,8 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import Form from "@components/Form";
+
+const EditPage = () => {
+  return (
+    <Suspense>
+      <EditPrompt />
+    </Suspense>
+  );
+};
+export default EditPage;
 
 const EditPrompt = () => {
   const router = useRouter();
@@ -12,6 +22,7 @@ const EditPrompt = () => {
     prompt: "",
     tag: "",
   });
+
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
 
@@ -64,4 +75,3 @@ const EditPrompt = () => {
     ></Form>
   );
 };
-export default EditPrompt;
